@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Sectors</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style type="text/css">
+    	.container {max-width: 90%; display: block;}   
+        .edit-page {text-align: right; padding: 3%;}    
+        .serialTable { counter-reset: Serial; }
+  		.serialTable { border-collapse: separate; }
+  		.serialTable tr td:first-child:before { counter-increment: Serial; content: counter(Serial); }
+  		.icon-action { padding: 1%; }
+  		.modal-dialog{
+		    width: 400px;
+		    margin: 70px auto 0;
+		}
+		.modal-dialog{ transform: scale(0.5); }
+		.modal-dialog{ transform: scale(1); }
+		.modal-dialog .modal-content{
+		    text-align: center;
+		    border: none;
+		}
+
+		@media only screen and (max-width: 480px){
+		 	.modal-dialog{ width: 95% !important; }
+		    .modal-content .modal-body{
+		        padding: 60px 20px 40px !important;
+		    }
+		}
+
+		#subframe {
+		  display: none;
+		}
+
+
+    </style>
+    <script src="SectionScript.js"></script>	   
+</head>
+<body>
+	<div class="container">
+    	<div class="edit-page"><a href="index.html" title="Home">Home</a></div>
+    	  
+    	  <div>
+		    <h2>Sectors</h2>
+		    <span style="float:right;">
+		        <button type="button" class="btn btn-default btn-sm show-modal" onclick="getAddSectorTypeMenu()" data-toggle="modal" data-target="#addPopup" title="Add Sector">
+		          <span class="glyphicon glyphicon-plus"></span>
+		        </button>
+		    </span>
+		  </div>
+    	  <div style="border: 1px solid dimgray; margin-top: 50px">
+			  <table class="table table-hover serialTable">
+			    <thead>
+			      <tr>
+			        <th>Sl. No</th>
+			        <th>Sector Name</th>
+			        <th>Sector Type</th>
+			        <th>Actions</th>
+			      </tr>
+			    </thead>
+			    <tbody id="sectorList">
+			    </tbody>
+			  </table>
+		  </div>
+	</div>
+
+	<div class="modal fade" id="editPopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+   		<div class="modal-dialog" role="document">
+          <div class="modal-content clearfix">
+             <div class="modal-body">
+             	  <form class="form-container" id="editForm" method="POST" onsubmit="addSectorReturn()" target="sub" >
+
+             	<h3>Edit Sector</h3><br>                                 
+              <label><b>Name : </b></label>
+			    <input type="text" placeholder="Enter Sector Name" name="name" id="name" required style="padding: 2%;margin-bottom: 5%;margin-left: 2%;"><br>
+			    <label><b>Type : </b></label>
+			    <select name="type" id="typeEdit" name="typeEdit" required style="padding: 2.5%;margin-bottom: 5%;margin-left: 2%;width: 60%;">
+			    </select>
+			    <br>
+			    <button type="submit" class="btn">Update</button>
+			    <button type="button" class="btn cancel" data-dismiss="modal" aria-label="Close" >Cancel</button>
+			</form>
+              </div>
+           </div>
+      	</div>
+	</div>
+
+		<div class="modal fade" id="addPopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+   		<div class="modal-dialog" role="document">
+          <div class="modal-content clearfix">
+             <div class="modal-body">
+             	  <form class="form-container" id ="addForm" onsubmit="addSectorReturn()" target="sub" method="POST">
+
+             	<h3>Add Sector</h3><br>
+                                 
+              <label><b>Name : </b></label>
+			    <input type="text" placeholder="Enter Sector Name" name="name" required style="padding: 2%;margin-bottom: 5%;margin-left: 2%;"><br>
+			    <label><b>Type : </b></label>
+			    <select name="type" id="typeAdd" required style="padding: 2.5%;margin-bottom: 5%;margin-left: 2%; width: 60%;">
+			    </select>
+			    <br>
+			    <button type="submit" class="btn">Save</button>
+			    <button type="button" class="btn cancel" data-dismiss="modal"  aria-label="Close" >Cancel</button>
+			</form>
+              </div>
+           </div>
+      	</div>
+	</div>
+
+	<iframe id="subframe" name="sub">
+	</iframe>
+
+
+</body>
+</html>

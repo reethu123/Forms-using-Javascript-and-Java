@@ -1,0 +1,64 @@
+<!-- saved from url=(0094)file:///C:/Users/oliver.stimmer/AppData/Roaming/Skype/My%20Skype%20Received%20Files/index.html -->
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Test Task</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="http://code.jquery.com/jquery-latest.pack.js"></script>
+
+      <style type="text/css">
+        .container {max-width: 90%; display: block;}   
+        .edit-page {text-align: right; padding: 3%;}    
+        #subframe {
+          display: none;
+        } 
+      </style>
+      <script src="FormDataScript.js"></script>
+</head>
+   </head>
+   <body>
+    
+    <div class="container">
+      <div class="edit-page"><a href="sectors.html" title="Edit Sectors">Edit Sectors</a></div>
+      <h4>Please enter your name and pick the Sectors you are currently involved in.</h4>
+
+      <form class="form-horizontal" id="addForm" name="addForm" action ="http://localhost:8010/api/v1/formData" onsubmit="addSectorReturn()" target="sub" method="POST">
+      <br>
+ 
+
+      <!-- Name input -->
+      <div class="form-outline mb-4">
+        <label class="form-label">Name : </label>
+        <input type="text" id="name" name="name" placeholder="Enter Name" class="form-control" required />
+      </div>
+
+      <!-- Sector input -->
+      <div class="form-outline mb-4">
+        <label class="form-label">Sectors :</label>
+        <select multiple name="sectors" id="sectors" class="form-control" required="true">          
+        </select>
+      </div>
+      <br>
+
+      <!-- Checkbox -->
+      <div class="form-check d-flex justify-content-center mb-4">
+        <input class="form-check-input me-2" name="agreeToTerms" id="agreeToTerms" type="checkbox" value="true" required/>
+        <label class="form-check-label">
+          Agree to terms
+        </label>
+      </div>
+
+      <!-- Submit button -->
+      <button type="submit" id="saveButton" class="btn btn-primary btn-block mb-4">Save</button>
+
+      </form>
+
+    </div>
+    <iframe id="subframe" name="sub"></iframe>
+
+  </body>
+</html>
